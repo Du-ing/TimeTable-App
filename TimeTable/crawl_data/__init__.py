@@ -5,10 +5,12 @@ import requests
 url = 'http://sso.jwc.whut.edu.cn/Certification/login.do'
 # 请求标头
 headers = {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    }
+    'Accept': 'text/html,application/xhtml+xml,application/xml;'
+              'q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+}
 
-def get_lesson(username,password):
+
+def get_data(username, password):
     # 加密后的用户名和密码参数
     username1 = hashlib.md5(username.encode('utf8')).hexdigest()
     temp = username + password
@@ -19,7 +21,7 @@ def get_lesson(username,password):
     data_code = {
         'webfinger': '8eef3d54b38874b37897b6e29030365e'
     }
-    code = requests.post(url=url_code,data=data_code).text
+    code = requests.post(url=url_code, data=data_code).text
     # print(code)
 
     # 请求数据
@@ -39,11 +41,11 @@ def get_lesson(username,password):
         'password': password
     }
 
-    index_page = requests.post(url=url,data=data,headers=headers).text
-    with open('../page/index.html','w',encoding='utf-8') as fp:
+    index_page = requests.post(url=url, data=data, headers=headers).text
+    with open('../page/index.html', 'w', encoding='utf-8') as fp:
         fp.write(index_page)
-        fp.close();
+        fp.close()
 
 
 if __name__ == '__main__':
-    get_lesson('xxxxxx','xxxxxx')
+    get_data('xxxxxx', 'xxxxxx')
