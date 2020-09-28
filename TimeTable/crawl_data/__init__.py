@@ -123,6 +123,3 @@ def get_data(username, password):
                     # print(count)
     return data
 
-
-# if __name__ == '__main__':
-#     get_data('0121820390301', 'whlg201898.')

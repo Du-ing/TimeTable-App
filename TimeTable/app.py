@@ -24,7 +24,7 @@ def get_info():
     })
 
 
-@app.route('/getuser')
+@app.route('/getUser')
 def request_user():
     try:
         username = request.args.get('username')
@@ -46,7 +46,7 @@ def request_user():
     })
 
 
-@app.route('/api/lesson')
+@app.route('/getTables')
 def request_data():
     try:
         username = request.args.get('username')
@@ -69,4 +69,5 @@ def request_data():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5666)
+    # app.run(host='0.0.0.0', port=5666)
